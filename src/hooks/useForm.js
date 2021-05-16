@@ -4,8 +4,11 @@ import { useState } from 'react';
 export const useForm = (initialValues) => {
     const [state, setState] = useState(initialValues);
 
-    const setValue = (value) => {
-        setState(value);
+    const handleChanges = (event) => {
+        setState({
+            ...state,
+            [event.target.name]: event.target.value
+        })
     }
-    return [state, setValue];
+    return [state, handleChanges];
 }
